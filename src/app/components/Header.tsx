@@ -15,7 +15,6 @@ const items: MenuProps['items'] = [
     label: <Link href={"/blogs"}>Manage Blogs</Link>,
     key: 'blogs',
     icon: <AppstoreOutlined />,
-    disabled: true,
   },
  
 ];
