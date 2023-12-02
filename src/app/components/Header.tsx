@@ -4,6 +4,10 @@ import { AppstoreOutlined, MailOutlined, SettingOutlined } from '@ant-design/ico
 import type { MenuProps } from 'antd';
 import { Menu } from 'antd';
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
+
+import { useParams } from 'next/navigation'
+
 
 const items: MenuProps['items'] = [
   {
@@ -21,7 +25,10 @@ const items: MenuProps['items'] = [
 
 const Header: React.FC = () => {
   const [current, setCurrent] = useState('users');
-
+  const pathname = usePathname()
+  const params = useParams();
+  console.log({pathname, params});
+  
   const onClick: MenuProps['onClick'] = (e) => {
     console.log('click ', e);
     setCurrent(e.key);
