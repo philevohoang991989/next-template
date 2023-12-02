@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import StyledComponentsRegistry from '@/lib/antd.registry'
+import Header from './components/Header'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -16,7 +17,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className} suppressHydrationWarning={true}><StyledComponentsRegistry>{children}</StyledComponentsRegistry></body>
+      <body className={inter.className} suppressHydrationWarning={true}><StyledComponentsRegistry>
+        <Header/>
+        {children}</StyledComponentsRegistry></body>
     </html>
   )
 }
