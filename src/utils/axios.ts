@@ -1,5 +1,5 @@
 "use client";
-import axios from "axios";
+import axios, { AxiosResponse } from "axios";
 import { getSession } from "next-auth/react";
 
 const axiosInstance = axios.create({
@@ -24,17 +24,20 @@ axiosInstance.interceptors.request.use(
     return Promise.reject(error);
   }
 );
-axiosInstance.interceptors.response.use(function (response) {
-  // Any status code that lie within the range of 2xx cause this function to trigger
-  // Do something with response data
-  return {
-    status: response.status,
-    data: response.data
-  };
-}, function (error) {
-  // Any status codes that falls outside the range of 2xx cause this function to trigger
-  // Do something with response error
-  return Promise.reject(error);
-});
+axiosInstance.interceptors.response.use(
+  (response: any) => {
+    // Any status code that lie within the range of 2xx cause this function to trigger
+    // Do something with response data
+    return {
+      status: response.status,
+      data: response.data,
+    };
+  },
+  (error) => {
+    // Any status codes that falls outside the range of 2xx cause this function to trigger
+    // Do something with response error
+    return Promise.reject(error);
+  }
+);
 
 export default axiosInstance;

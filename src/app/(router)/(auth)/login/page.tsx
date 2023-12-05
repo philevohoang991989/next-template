@@ -21,11 +21,11 @@ const LoginForm = () => {
     });
     console.log({ signInData });
 
-    // if (signInData?.error) {
-    //     message.error("Oops! Something when wrong!")
-    //   } else {
-    //     router.push("/dashboard");
-    //   }
+    if (signInData?.error) {
+        message.error("Oops! Something when wrong!")
+      } else {
+        router.push("/users");
+      }
   };
 
   const onFinishFailed = (errorInfo: any) => {
