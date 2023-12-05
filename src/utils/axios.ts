@@ -25,18 +25,15 @@ axiosInstance.interceptors.request.use(
   }
 );
 axiosInstance.interceptors.response.use(
-  (response: any) => {
+  function (response) {
     // Any status code that lie within the range of 2xx cause this function to trigger
     // Do something with response data
-    return {
-      status: response.status,
-      data: response.data,
-    };
+    return response
   },
-  (error) => {
+  function (error) {
     // Any status codes that falls outside the range of 2xx cause this function to trigger
     // Do something with response error
-    return Promise.reject(error);
+    return Promise.reject(error)
   }
 );
 
