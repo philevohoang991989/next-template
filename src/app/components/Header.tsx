@@ -28,11 +28,9 @@ const Header: React.FC = () => {
   const pathname = usePathname();
   const param = pathname.split("/");
   const onClick: MenuProps["onClick"] = (e) => {
-    console.log("click ", e);
     setCurrent(e.key);
   };
   useEffect(() => {
-    console.log({ pathname, param });
     setCurrent(param[1]);
   }, [pathname, param]);
 
