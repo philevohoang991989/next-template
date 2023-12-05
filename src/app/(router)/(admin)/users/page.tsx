@@ -1,9 +1,23 @@
-import React from 'react';
+"use client";
+import User from "@/app/components/User";
+import { Iuser } from "@/types/user";
+import axiosInstance from "@/utils/axios";
+import { useEffect, useState } from "react";
 
-export default function PageUser () {
+function PageUser() {
+  const [userInfo, setUserInfo] = useState<Iuser>();
+
+  useEffect(() => {
+    axiosInstance.get("/user/me").then((res) => {
+      const { data } = res;
+      setUserInfo(data);
+    });
+  }, []);
+
   return (
-    <div>
-      PageUser
-    </div>
+    <section>
+      <User users={userInfo} />
+    </section>
   );
 }
+export default PageUser;

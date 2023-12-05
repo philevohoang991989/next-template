@@ -4,8 +4,6 @@ import { Button, Form, Input, message } from "antd";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
 
-
-
 type FieldType = {
   username?: string;
   password?: string;
@@ -13,26 +11,26 @@ type FieldType = {
 };
 
 const LoginForm = () => {
-    const router = useRouter()
-    const onFinish = async (values: any) => {
-        console.log("Success:", values);
-        const signInData = await signIn("credentials", {
-          username: values.username,
-          password: values.password,
-          redirect: false,
-        });
-        console.log({signInData});
-        
-        if (signInData?.error) {
-            message.error("Oops! Something when wrong!")
-          } else {
-            router.push("/dashboard");
-          }
-      };
-      
-      const onFinishFailed = (errorInfo: any) => {
-        console.log("Failed:", errorInfo);
-      };
+  const router = useRouter();
+  const onFinish = async (values: any) => {
+    console.log("Success:", values);
+    const signInData = await signIn("credentials", {
+      username: values.username,
+      password: values.password,
+      redirect: false,
+    });
+    console.log({ signInData });
+
+    // if (signInData?.error) {
+    //     message.error("Oops! Something when wrong!")
+    //   } else {
+    //     router.push("/dashboard");
+    //   }
+  };
+
+  const onFinishFailed = (errorInfo: any) => {
+    console.log("Failed:", errorInfo);
+  };
   return (
     <Form
       name="basic"
