@@ -9,7 +9,6 @@ function PageUser() {
 
   useEffect(() => {
     axiosInstance.get("/user/me").then((res) => {
-      console.log({res});
       
       const { data } = res;
       setUserInfo(data);
