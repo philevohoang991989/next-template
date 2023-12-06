@@ -4,6 +4,7 @@ import { Iuser } from "@/types/user";
 import axiosInstance from "@/utils/axios";
 import { useEffect, useState } from "react";
 
+
 function PageUser() {
   const [userInfo, setUserInfo] = useState<Iuser>();
 

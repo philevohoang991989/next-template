@@ -1,11 +1,12 @@
+import styles from './styles.module.scss'
 const DetailUserPage = (props: any)=>{
     console.log(">>> check props: " , props);
     const {params} = props
     return(
-        <div>
-            abc
+        <section className={styles.wrapperPage}>
+            <span>abc</span> 
             id = {params?.id}
-        </div>
+        </section>
     )
 }
 export default DetailUserPage
