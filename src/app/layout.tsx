@@ -3,6 +3,8 @@ import { Inter } from "next/font/google";
 import StyledComponentsRegistry from "@/lib/antd.registry";
 import './global.css'
 import Provider from "./components/Provider";
+import theme from '@/theme/themeConfig';
+import { ConfigProvider } from "antd";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -19,7 +21,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className} suppressHydrationWarning={true}>
-        <StyledComponentsRegistry><Provider>{children}</Provider></StyledComponentsRegistry>
+        <StyledComponentsRegistry><Provider><ConfigProvider theme={theme}>{children}</ConfigProvider></Provider></StyledComponentsRegistry>
       </body>
     </html>
   );

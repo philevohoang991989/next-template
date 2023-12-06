@@ -3,7 +3,8 @@ import User from "@/app/components/User";
 import { Iuser } from "@/types/user";
 import axiosInstance from "@/utils/axios";
 import { useEffect, useState } from "react";
-
+import styles from './styles.module.scss'
+import { Button } from "antd";
 
 function PageUser() {
   const [userInfo, setUserInfo] = useState<Iuser>();
@@ -17,8 +18,10 @@ function PageUser() {
   }, []);
 
   return (
-    <section>
+    <section className={styles.wapperPage}>
+      <h1>asdasdasdas</h1>
       <User users={userInfo} />
+      <Button type="primary">sdsd</Button>
     </section>
   );
 }

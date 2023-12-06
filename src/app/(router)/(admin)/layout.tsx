@@ -1,66 +1,117 @@
 "use client";
 import Header from "@/app/components/Header";
 import { Layout, Menu, MenuProps, Space, theme } from "antd";
-import {
-  AppstoreOutlined,
-  BarChartOutlined,
-  CloudOutlined,
-  ShopOutlined,
-  TeamOutlined,
-  UploadOutlined,
-  UserOutlined,
-  VideoCameraOutlined,
-} from '@ant-design/icons';
-import React from "react";
+import IcHardDrive from "@/app/assets/icons/ic_hard-drive.svg";
+import { AppstoreOutlined, CalendarOutlined } from "@ant-design/icons";
+import React, { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
+import Link from "next/link";
+import Image from "next/image";
 export default function AuthLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  
   const {
     token: { colorBgContainer },
   } = theme.useToken();
 
   const { Header, Footer, Sider, Content } = Layout;
-  const items: MenuProps['items'] = [
-    UserOutlined,
-    VideoCameraOutlined,
-    UploadOutlined,
-    BarChartOutlined,
-    CloudOutlined,
-    AppstoreOutlined,
-    TeamOutlined,
-    ShopOutlined,
-  ].map((icon, index) => ({
-    key: String(index + 1),
-    icon: React.createElement(icon),
-    label: `nav ${index + 1}`,
-  }));
+  type MenuItem = Required<MenuProps>["items"][number];
+
+  function getItem(
+    label: React.ReactNode,
+    key?: React.Key | null,
+    icon?: React.ReactNode,
+    children?: MenuItem[],
+    onClick?: any
+  ): MenuItem {
+    return {
+      label,
+      key,
+      icon,
+      children,
+      onClick,
+    } as MenuItem;
+  }
+  const [current, setCurrent] = useState("users");
+  console.log({ current });
+
+  const items: MenuItem[] = [
+    getItem(
+      <Link href="/users">Users</Link>,
+      "users",
+      <Image
+        src={IcHardDrive}
+        width={20}
+        height={20}
+        alt="Picture of the author"
+      />
+    ),
+    getItem(<Link href="/blogs">Blogs</Link>, "blogs", <CalendarOutlined />),
+    getItem("Navigation Two", "sub1", <AppstoreOutlined />, [
+      getItem(<Link href="/contact">Contacts</Link>, "contact"),
+      getItem("Option 4", "4"),
+      getItem("Submenu", "sub1-2", null, [
+        getItem("Option 5", "5"),
+        getItem("Option 6", "6"),
+      ]),
+    ]),
+  ];
+  const onClick: MenuProps["onClick"] = (e) => {
+    console.log("click ", e);
+    setCurrent(e.key);
+  };
+  const pathname = usePathname();
+  const param = pathname.split("/");
+
+  useEffect(() => {
+    console.log({ pathname, param });
+    setCurrent(param[1]);
+  }, [pathname, param]);
+
   return (
     <section>
-     <Layout hasSider>
-      <Sider 
-        style={{
-          overflow: 'auto',
-          height: '100vh',
-          position: 'fixed',
-          left: 0,
-          top: 0,
-          bottom: 0,
-        }}
-      >
-        <div className="demo-logo-vertical" />
-        <Menu theme="dark" mode="inline" defaultSelectedKeys={['4']} items={items} />
-      </Sider>
-      <Layout className="site-layout" style={{ marginLeft: 200 }}>
-        <Header style={{ padding: 0, background: colorBgContainer }} />
-        <Content style={{ margin: '24px 16px 0', overflow: 'initial' }}>
-         {children}
-        </Content>
-        <Footer style={{ textAlign: 'center' }}>Ant Design ©2023 Created by Ant UED</Footer>
+      <Layout hasSider>
+        <Sider
+          breakpoint="lg"
+          collapsedWidth="0"
+          onBreakpoint={(broken) => {
+            console.log(broken);
+          }}
+          onCollapse={(collapsed, type) => {
+            console.log(collapsed, type);
+          }}
+          style={{
+            // overflow: "auto",
+            height: "100vh",
+            // position: "fixed",
+            // left: 0,
+            // top: 0,
+            // bottom: 0,
+          }}
+        >
+          <div className="demo-logo-vertical" />
+          <Menu
+            style={{ width: 200 }}
+            defaultSelectedKeys={["1"]}
+            defaultOpenKeys={["sub1"]}
+            mode="inline"
+            items={items}
+            selectedKeys={[current]}
+            onClick={onClick}
+          />
+        </Sider>
+        <Layout className="site-layout">
+          <Header style={{ padding: 0, background: colorBgContainer }} />
+          <Content style={{ margin: "24px 16px 0", overflow: "initial" }}>
+            {children}
+          </Content>
+          <Footer style={{ textAlign: "center" }}>
+            Ant Design ©2023 Created by Ant UED
+          </Footer>
+        </Layout>
       </Layout>
-    </Layout>
     </section>
   );
 }
