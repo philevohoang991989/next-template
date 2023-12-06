@@ -34,7 +34,6 @@ export default function AuthLayout({
     } as MenuItem;
   }
   const [current, setCurrent] = useState("users");
-  console.log({ current });
 
   const items: MenuItem[] = [
     getItem(
@@ -82,17 +81,12 @@ export default function AuthLayout({
             console.log(collapsed, type);
           }}
           style={{
-            // overflow: "auto",
             height: "100vh",
-            // position: "fixed",
-            // left: 0,
-            // top: 0,
-            // bottom: 0,
           }}
         >
           <div className="demo-logo-vertical" />
           <Menu
-            style={{ width: 200 }}
+            style={{ width: 200,height:'100vh' }}
             defaultSelectedKeys={["1"]}
             defaultOpenKeys={["sub1"]}
             mode="inline"
