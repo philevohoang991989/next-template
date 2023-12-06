@@ -1,8 +1,10 @@
 "use client";
-import IcHardDrive from "@/app/assets/icons/ic_hard-drive.svg";
-import { AppstoreOutlined, CalendarOutlined } from "@ant-design/icons";
+import {
+  AppstoreOutlined,
+  CalendarOutlined,
+  UserOutlined,
+} from "@ant-design/icons";
 import { Layout, Menu, MenuProps, theme } from "antd";
-import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React, { useEffect, useState } from "react";
@@ -36,16 +38,7 @@ export default function AuthLayout({
   const [current, setCurrent] = useState("users");
 
   const items: MenuItem[] = [
-    getItem(
-      <Link href="/users">Users</Link>,
-      "users",
-      <Image
-        src={IcHardDrive}
-        width={20}
-        height={20}
-        alt="Picture of the author"
-      />
-    ),
+    getItem(<Link href="/users">Users</Link>, "users", <UserOutlined />),
     getItem(<Link href="/blogs">Blogs</Link>, "blogs", <CalendarOutlined />),
     getItem("Navigation Two", "sub1", <AppstoreOutlined />, [
       getItem(<Link href="/contact">Contacts</Link>, "contact"),
@@ -86,7 +79,7 @@ export default function AuthLayout({
         >
           <div className="demo-logo-vertical" />
           <Menu
-            style={{ width: 200,height:'100vh' }}
+            style={{ width: 200, height: "100vh" }}
             defaultSelectedKeys={["1"]}
             defaultOpenKeys={["sub1"]}
             mode="inline"
