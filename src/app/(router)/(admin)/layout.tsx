@@ -1,12 +1,11 @@
 "use client";
-import Header from "@/app/components/Header";
-import { Layout, Menu, MenuProps, Space, theme } from "antd";
 import IcHardDrive from "@/app/assets/icons/ic_hard-drive.svg";
 import { AppstoreOutlined, CalendarOutlined } from "@ant-design/icons";
-import React, { useEffect, useState } from "react";
-import { usePathname } from "next/navigation";
-import Link from "next/link";
+import { Layout, Menu, MenuProps, theme } from "antd";
 import Image from "next/image";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import React, { useEffect, useState } from "react";
 export default function AuthLayout({
   children,
 }: {
@@ -103,7 +102,6 @@ export default function AuthLayout({
           />
         </Sider>
         <Layout className="site-layout">
-          <Header style={{ padding: 0, background: colorBgContainer }} />
           <Content style={{ margin: "24px 16px 0", overflow: "initial" }}>
             {children}
           </Content>
