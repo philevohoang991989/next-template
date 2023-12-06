@@ -22,7 +22,7 @@ export const authOptions: NextAuthOptions = {
         
         try {
             // Call your API to validate credentials
-            const response = await fetch(`https://nsk-ocr-backoffice-dev.demo.bnksolution.com/auth/login`, {
+            const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/auth/login`, {
               method: 'POST',
               headers: {
                 'Content-Type': 'application/json',

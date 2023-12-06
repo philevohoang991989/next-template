@@ -3,7 +3,7 @@ import axios, { AxiosResponse } from "axios";
 import { getSession } from "next-auth/react";
 
 const axiosInstance = axios.create({
-  baseURL: "https://nsk-ocr-backoffice-dev.demo.bnksolution.com",
+  baseURL: process.env.NEXT_PUBLIC_API_URL,
   headers: {
     // Accept: 'application/json',
     "Content-Type": "application/json",
