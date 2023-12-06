@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import StyledComponentsRegistry from "@/lib/antd.registry";
-import './global.css'
+import './global.scss'
 import Provider from "./components/Provider";
 import theme from '@/theme/themeConfig';
 import { ConfigProvider } from "antd";

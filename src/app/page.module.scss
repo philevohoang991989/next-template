@@ -104,17 +104,7 @@
   transform: translateZ(0);
 }
 
-:global {
-  .ant-layout-sider {
-    &.ant-layout-sider-below {
-      position: fixed;
-      z-index: 99;
-    }
-  }
-  .ant-layout .ant-layout-sider-children {
-    position: relative;
-  }
-}
+
 .logo {
   position: relative;
 }
