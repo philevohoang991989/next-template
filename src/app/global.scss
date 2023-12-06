@@ -4,9 +4,22 @@ html {
 body {
   margin: 0;
 }
+span{
+  &.ant-menu-title-content{
+    font-size: 1.4rem !important;
+  }  
+}
+.ant-menu-item{
+  
+  
+  a{
+    font-size: 1.4rem !important;
+  }
+}
 @media only screen and (max-width: 768px) {
   .ant-layout-sider {
     position: fixed !important;
     z-index: 99;
   }
+  
 }
