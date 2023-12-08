@@ -40,7 +40,7 @@ const LoginForm = () => {
     <div className={styles.wapperPage}>
       <div className={styles.formAuth}>
         <div className={styles.headerForm}>
-          <Image src={Logo} alt="Your Company" width={100} height={100} />
+          <Image src={Logo} alt="Your Company" width={100} height={100} priority={true} />
           <h2>Sign in to your account</h2>
         </div>
         <Form
@@ -74,6 +74,7 @@ const LoginForm = () => {
                   width={20}
                   height={20}
                   alt='Image password'
+                  priority={true}
                 />
               )}
             />
