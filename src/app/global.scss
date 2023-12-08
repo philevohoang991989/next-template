@@ -9,6 +9,23 @@ span{
     font-size: 1.4rem !important;
   }  
 }
+input{
+  font-size: 1.2rem !important; 
+}
+.formInput {
+  width: 100%;
+  margin-bottom: 2.2rem;
+  label {
+      font-size: 1.4rem !important;
+      font-weight: 500 !important;
+      &::before {
+          font-size: 1.4rem !important;
+      }
+  }
+}
+.inputField {
+  height: 4rem;
+}
 .ant-menu-item{
   
   

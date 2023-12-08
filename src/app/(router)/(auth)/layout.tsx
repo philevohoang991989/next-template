@@ -3,5 +3,5 @@ export default function AuthLayout({
   }: {
     children: React.ReactNode
   }) {
-    return <section>{children}</section>
+    return <section style={{backgroundColor:'#eff2fb'}}>{children}</section>
   }
