@@ -38,6 +38,7 @@ export default function AuthLayout({
   const [current, setCurrent] = useState("users");
 
   const items: MenuItem[] = [
+    getItem(<Link href="/users">OCR Request</Link>, "OCRRequest", <UserOutlined />),
     getItem(<Link href="/users">Users</Link>, "users", <UserOutlined />),
     getItem(<Link href="/blogs">Blogs</Link>, "blogs", <CalendarOutlined />),
     getItem("Navigation Two", "sub1", <AppstoreOutlined />, [

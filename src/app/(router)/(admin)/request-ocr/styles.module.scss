@@ -1,0 +1,19 @@
+.wapperPage {
+    background-color: #fff;
+    padding: 2.4rem;
+    border-radius: 1.2rem;
+    border: 1px;
+    gap: 1.6rem;
+    border: 1px solid #eaecf0;
+    .listFile{
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+        .itemList{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+    }
+    
+}
