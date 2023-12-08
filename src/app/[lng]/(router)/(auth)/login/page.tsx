@@ -8,6 +8,7 @@ import Logo from '@/app/assets/icons/logo.svg';
 import styles from '../styles.module.scss';
 import showPassWord from '@/app/assets/icons/ic_eye.svg';
 import hidePassWord from '@/app/assets/icons/ic_eye_slash.svg';
+import { fallbackLng, languages } from '@/app/i18n/settings';
 
 type FieldType = {
   username?: string;
@@ -15,8 +16,9 @@ type FieldType = {
   remember?: string;
 };
 
-const LoginForm = () => {
+const LoginForm = ({ params: { lng } }: any) => {
   const router = useRouter();
+  if (languages.indexOf(lng) < 0) lng = fallbackLng
   const onFinish = async (values: any) => {
     console.log('Success:', values);
     const signInData = await signIn('credentials', {
@@ -29,7 +31,7 @@ const LoginForm = () => {
     if (signInData?.error) {
       message.error('Oops! Something when wrong!');
     } else {
-      router.push('/users');
+      router.push(`${lng}/users`);
     }
   };
 
