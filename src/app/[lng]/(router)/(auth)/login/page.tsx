@@ -40,7 +40,6 @@ const LoginForm = () => {
     <div className={styles.wapperPage}>
       <div className={styles.formAuth}>
         <div className={styles.headerForm}>
-          <Image src={Logo} alt="Your Company" width={100} height={100} priority={true} />
           <h2>Sign in to your account</h2>
         </div>
         <Form
@@ -52,7 +51,6 @@ const LoginForm = () => {
           autoComplete="off"
         >
           <Form.Item<FieldType>
-            label="Username"
             name="username"
             className="formInput"
             rules={[{required: true, message: 'Please input your username!'}]}
@@ -61,7 +59,6 @@ const LoginForm = () => {
           </Form.Item>
 
           <Form.Item<FieldType>
-            label="Password"
             name="password"
             className="formInput"
             rules={[{required: true, message: 'Please input your password!'}]}

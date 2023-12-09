@@ -14,7 +14,7 @@ input{
 }
 .formInput {
   width: 100%;
-  margin-bottom: 2.2rem;
+  margin-bottom: 0!important;
   label {
       font-size: 1.4rem !important;
       font-weight: 500 !important;
@@ -22,6 +22,10 @@ input{
           font-size: 1.4rem !important;
       }
   }
+}
+.ant-form-item-explain-error{
+  position: absolute !important;
+  font-size: 1.2rem !important;
 }
 .inputField {
   height: 4rem;
