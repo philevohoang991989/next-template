@@ -10,8 +10,12 @@ import { usePathname } from "next/navigation";
 import React, { useEffect, useState } from "react";
 export default function AuthLayout({
   children,
+  params: { lng }
 }: {
   children: React.ReactNode;
+  params: {
+    lng: string;
+  }
 }) {
   const {
     token: { colorBgContainer },
@@ -38,11 +42,11 @@ export default function AuthLayout({
   const [current, setCurrent] = useState("users");
 
   const items: MenuItem[] = [
-    getItem(<Link href="/users">OCR Request</Link>, "request-ocr", <UserOutlined />),
-    getItem(<Link href="/users">Users</Link>, "users", <UserOutlined />),
-    getItem(<Link href="/blogs">Blogs</Link>, "blogs", <CalendarOutlined />),
+    getItem(<Link href={`/${lng}/request-ocr`}>OCR Request</Link>, "request-ocr", <UserOutlined />),
+    getItem(<Link href={`/${lng}/users`}>Users</Link>, "users", <UserOutlined />),
+    getItem(<Link href={`/${lng}/blogs`}>Blogs</Link>, "blogs", <CalendarOutlined />),
     getItem("Navigation Two", "sub1", <AppstoreOutlined />, [
-      getItem(<Link href="/contact">Contacts</Link>, "contact"),
+      getItem(<Link href={`/${lng}/contact`}>Contacts</Link>, "contact"),
       getItem("Option 4", "4"),
       getItem("Submenu", "sub1-2", null, [
         getItem("Option 5", "5"),
@@ -59,7 +63,7 @@ export default function AuthLayout({
 
   useEffect(() => {
     console.log({ pathname, param });
-    setCurrent(param[1]);
+    setCurrent(param[2]);
   }, [pathname, param]);
 
   return (

@@ -19,7 +19,8 @@ export const middleware= async(request: NextRequest)=> {
         req: request,
         secret: process.env.NEXTAUTH_SECRET
     })
-    
+    console.log({token});
+	
     const { pathname } = request.nextUrl
 	let lng: string | undefined | null
 	if (request.cookies.has(cookieName)) lng = acceptLanguage.get(request.cookies.get(cookieName)?.value)

@@ -15,7 +15,11 @@ type FieldType = {
   remember?: string;
 };
 
-const LoginForm = () => {
+const LoginForm = ({ params: { lng } }: {
+  params: {
+    lng: string;
+  };
+}) => {
   const router = useRouter();
   const onFinish = async (values: any) => {
     console.log('Success:', values);
@@ -29,7 +33,7 @@ const LoginForm = () => {
     if (signInData?.error) {
       message.error('Oops! Something when wrong!');
     } else {
-      router.push('/users');
+      router.push(`/${lng}/users`);
     }
   };
 
