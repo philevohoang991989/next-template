@@ -2,6 +2,7 @@ import Providers from '@/components/providers';
 import { routing } from '@/i18n/routing';
 import theme from "@/themes/themeConfig";
 import { AntdRegistry } from '@ant-design/nextjs-registry';
+import '@ant-design/v5-patch-for-react-19';
 import { ConfigProvider } from 'antd';
 import { NextIntlClientProvider, hasLocale } from 'next-intl';
 import { getMessages } from 'next-intl/server';
