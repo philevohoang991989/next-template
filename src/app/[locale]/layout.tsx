@@ -6,6 +6,7 @@ import { ConfigProvider } from 'antd';
 import { NextIntlClientProvider, hasLocale } from 'next-intl';
 import { getMessages } from 'next-intl/server';
 import { notFound } from 'next/navigation';
+import './globals.css';
 
 export default async function LocaleLayout({
     children,
@@ -21,7 +22,7 @@ export default async function LocaleLayout({
     }
     const messages = await getMessages();
     return (
-        <html lang='en'>
+        <html lang={locale} suppressHydrationWarning>
             <body >
                 <Providers>
                     <NextIntlClientProvider messages={messages}>
